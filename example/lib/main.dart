@@ -72,13 +72,24 @@ class _HomePageState extends State<HomePage> {
                 value: 0,
                 child: Text("Get Model List"),
               ),
+              const PopupMenuItem<int>(
+                value: 1,
+                child: Text("Get Sapmlers List"),
+              ),
             ];
           }, onSelected: (value) {
             if (value == 0) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const GetModelListExample(),
+                  builder: (context) => const GetAvailableSamplers(),
+                ),
+              );
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const GetAllSamplersExapmle(),
                 ),
               );
             }
@@ -154,21 +165,22 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-/// Example of getting models [GetModelListExample]
-class GetModelListExample extends StatefulWidget {
-  const GetModelListExample({super.key});
+/// Example of getting models [GetAvailableSamplers]
+class GetAvailableSamplers extends StatefulWidget {
+  const GetAvailableSamplers({super.key});
 
   @override
-  State<GetModelListExample> createState() => _GetModelListExampleState();
+  State<GetAvailableSamplers> createState() => _GetAvailableSamplersState();
 }
 
-class _GetModelListExampleState extends State<GetModelListExample> {
+class _GetAvailableSamplersState extends State<GetAvailableSamplers> {
   List<String> models = [];
   final VisionCraft visionCraft = VisionCraft();
 
   Future<void> getModelList() async {
     final result = await visionCraft.getModelList();
     models = result;
+
     /// Print Models.
     for (int i = 0; i < result.length; i++) {
       print(result[i]);
@@ -217,6 +229,81 @@ class _GetModelListExampleState extends State<GetModelListExample> {
           /// Refresh
           models.clear();
           getModelList();
+          setState(() {});
+        },
+        child: const Icon(
+          Icons.refresh,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}
+
+/// Example of gettings available samplers
+class GetAllSamplersExapmle extends StatefulWidget {
+  const GetAllSamplersExapmle({super.key});
+
+  @override
+  State<GetAllSamplersExapmle> createState() => _GetAllSamplersExapmleState();
+}
+
+class _GetAllSamplersExapmleState extends State<GetAllSamplersExapmle> {
+  List<String> samplers = [];
+  final VisionCraft visionCraft = VisionCraft();
+
+  Future<void> getSamplersList() async {
+    final result = await visionCraft.getSamplerList();
+    samplers = result;
+
+    /// Print Models.
+    for (int i = 0; i < result.length; i++) {
+      print(result[i]);
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getSamplersList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey.shade200,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          'GetSamplers Example',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: samplers.isEmpty
+          ? const Center(
+              child: CircularProgressIndicator(
+                color: Colors.blue,
+              ),
+            )
+          : ListView.builder(
+              itemCount: samplers.length,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(samplers[index]),
+                );
+              },
+            ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          /// Refresh
+          samplers.clear();
+          getSamplersList();
           setState(() {});
         },
         child: const Icon(

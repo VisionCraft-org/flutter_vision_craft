@@ -99,4 +99,29 @@ class VisionCraft {
       return [];
     }
   }
+
+  // Get all the available samplers.
+  Future<List<String>> getSamplerList() async {
+    const apiUrl = "https://visioncraftapi--vladalek05.repl.co/samplers";
+
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+
+      // Check if the request was successful (status code 200)
+      if (response.statusCode == 200) {
+        // Extract and return the list of samplers
+        final List<String> samplers =
+            List<String>.from(json.decode(response.body));
+        return samplers;
+      } else {
+        print("Error fetching samplers: ${response.statusCode}");
+        // Handle error based on the status code
+        return [];
+      }
+    } catch (error) {
+      print("Error fetching samplers: $error");
+      // Handle error as needed
+      return [];
+    }
+  }
 }
