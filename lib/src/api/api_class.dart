@@ -9,6 +9,7 @@ class VisionCraft {
   Future<Uint8List?> generateImage({
     required String apiKey,
     required String prompt,
+    required bool enableBadWords,
     String? negativePrompt,
     String? model,
     String? sampler,

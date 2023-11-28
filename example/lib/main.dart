@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
     final result = await visionCraft.generateImage(
       apiKey: apiKey,
       prompt: prompt,
+      enableBadWords: false,
     );
     imageResult = result;
     isLoading = false;
