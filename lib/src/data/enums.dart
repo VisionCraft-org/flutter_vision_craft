@@ -1,0 +1,4 @@
+enum AIStyle {
+  cartoon,
+  anime,
+}
