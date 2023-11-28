@@ -36,3 +36,51 @@ final VisionCraft visionCraft = VisionCraft();
     setState(() {});
   }
 ```
+
+### Example to get the models List.
+
+```dart
+List<String> models = [];
+  final VisionCraft visionCraft = VisionCraft();
+
+  Future<void> getModelList() async {
+    final result = await visionCraft.getModelList();
+    models = result;
+
+    /// Print Models.
+    for (int i = 0; i < result.length; i++) {
+      print(result[i]);
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getModelList();
+  }
+```
+
+### Example to get samplers List.
+
+```dart
+ List<String> samplers = [];
+  final VisionCraft visionCraft = VisionCraft();
+
+  Future<void> getSamplersList() async {
+    final result = await visionCraft.getSamplerList();
+    samplers = result;
+
+    /// Print Models.
+    for (int i = 0; i < result.length; i++) {
+      print(result[i]);
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getSamplersList();
+  }
+```
