@@ -1,0 +1,20 @@
+name: flutter_vision_craft
+description: Vision Craft AI Image generator flutter package.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
