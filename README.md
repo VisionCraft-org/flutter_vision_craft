@@ -87,7 +87,7 @@ List<String> models = [];
 
 ## Documentaion
 
-Refer to the "https://visioncraftapi.vladalek05.repl.co/docs" for more details on available models, samplers, and API usage.
+Refer to the https://visioncraftapi.vladalek05.repl.co/docs for more details on available models, samplers, and API usage.
 
 ## Issues and Contributions
 
@@ -126,3 +126,15 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
+
+## Developers
+
+### Karlmathuthu
+
+Karlmathuthu is a passionate developer with expertise in Flutter frontend developemnt as well as PHP & MongoDb for backend. You can find more about Karlmathuthu on [GitHub](https://github.com/Karlmathuthu) and connect on [Telegram](https://www.t.me/karlkiyotaka/).
+
+### Metimol
+
+Metimol is a skilled developer specializing in python backend developemnt. Explore more of Metimol's work on [GitHub](https://github.com/Metim0l) and reach out on [Telegram](https://www.t.me/metimol/).
+
+Feel free to contact either of the developers for inquiries, collaboration, or just to say hello!
