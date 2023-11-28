@@ -21,7 +21,7 @@ class VisionCraft {
     const visionCraftUrl = "$apiUrl/generate";
 
     final visionCraftData = {
-      "model": model ?? "anything_V5",
+      "model": model ?? "ICantBelieveItsNotPhotography_seco",
       "sampler": sampler ?? "Euler",
       "prompt": prompt,
       "negative_prompt": negativePrompt ?? "Blur",
