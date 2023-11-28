@@ -169,6 +169,7 @@ class _GetModelListExampleState extends State<GetModelListExample> {
   Future<void> getModelList() async {
     final result = await visionCraft.getModelList();
     models = result;
+    print(result);
     setState(() {});
   }
 
