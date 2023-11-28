@@ -87,7 +87,7 @@ List<String> models = [];
 
 ## Documentaion
 
-Refer to the [VisionCraft API Documentation]("https://visioncraftapi.vladalek05.repl.co/docs") for more details on available models, samplers, and API usage.
+Refer to the [VisionCraft API Documentation]('https://visioncraftapi.vladalek05.repl.co/docs') for more details on available models, samplers, and API usage.
 
 ## Issues and Contributions
 
