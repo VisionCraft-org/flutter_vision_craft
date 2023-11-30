@@ -9,3 +9,6 @@
 - Functions to generate images, get a list of available models, and retrieve available samplers.
 - Basic usage example in the README.md file.
 
+## 1.0.1
+
+- Removed my secret api key in the example folder.
