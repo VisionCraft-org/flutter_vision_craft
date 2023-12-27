@@ -12,3 +12,6 @@
 ## 1.0.1
 
 - Removed my secret api key in the example folder.
+
+## 1.1.0
+- Updated the baseUrl since the api request url changed.
