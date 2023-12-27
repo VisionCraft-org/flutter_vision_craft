@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   bool? isLoading;
 
   /// [apiKey] get your free api key on https://t.me/VisionCraft_bot by sending /Key.
-  String apiKey = "Your_Api_Key";
+  String apiKey = "f14eb9f4-de2a-4299-9557-bc8545da9d01";
 
   Future<void> createImage() async {
     String prompt = controller.text.trim().toString();
