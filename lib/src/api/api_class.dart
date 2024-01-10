@@ -16,7 +16,7 @@ class VisionCraft {
     int? cfgScale,
     int? steps,
   }) async {
-    const apiUrl = "https://visioncraft-aiapi.koyeb.app";
+    const apiUrl = "https://api-visioncraft.koyeb.app/";
 
     const visionCraftUrl = "$apiUrl/generate";
 

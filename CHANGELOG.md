@@ -15,3 +15,7 @@
 
 ## 1.1.0
 - Updated the baseUrl since the api request url changed.
+
+## 1.2.0
+
+- Updated the baseUrl since the api request url changed.
