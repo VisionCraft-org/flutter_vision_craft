@@ -16,12 +16,10 @@ class VisionCraft {
     int? cfgScale,
     int? steps,
   }) async {
-    const apiUrl = "https://api-visioncraft.koyeb.app/";
+    const url = 'https://api-visioncraft.koyeb.app/generate';
 
-    const visionCraftUrl = "$apiUrl/generate";
-
-    final visionCraftData = {
-      "model": model ?? "ICantBelieveItsNotPhotography_seco",
+    final requestBody = {
+      "model": model ?? "anything_V5",
       "sampler": sampler ?? "Euler",
       "prompt": prompt,
       "negative_prompt": negativePrompt ?? "Blur",
@@ -32,12 +30,16 @@ class VisionCraft {
     };
 
     try {
-      final response = await http.post(
-        Uri.parse(visionCraftUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode(visionCraftData),
-      );
+      final headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+      };
 
+      final response = await http.post(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
       // Check if the request was successful (status code 200)
       if (response.statusCode == 200) {
         // Extract image URL from the response
