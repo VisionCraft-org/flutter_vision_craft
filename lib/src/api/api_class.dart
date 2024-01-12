@@ -16,7 +16,8 @@ class VisionCraft {
     int? cfgScale,
     int? steps,
   }) async {
-    const url = 'https://api-visioncraft.koyeb.app/generate';
+    
+    const url = 'https://visioncraft-rs24.koyeb.app/generate';
 
     final requestBody = {
       "model": model ?? "anything_V5",
