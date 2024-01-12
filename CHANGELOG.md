@@ -23,3 +23,7 @@
 ## 1.2.1
 
 - Error generating image 404 : Fixed ❤️❤️🔥
+
+## 1.2.2
+
+- API URL changed 🔥🔥
