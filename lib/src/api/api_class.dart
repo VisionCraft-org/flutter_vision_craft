@@ -10,13 +10,13 @@ class VisionCraft {
     required String apiKey,
     required String prompt,
     required bool enableBadWords,
+    bool? watermark,
     String? negativePrompt,
     String? model,
     String? sampler,
     int? cfgScale,
     int? steps,
   }) async {
-    
     const url = 'https://visioncraft-rs24.koyeb.app/generate';
 
     final requestBody = {
@@ -28,6 +28,7 @@ class VisionCraft {
       "token": apiKey,
       "cfg_scale": cfgScale ?? 8,
       "steps": steps ?? 30,
+      "watermark": watermark,
     };
 
     try {
