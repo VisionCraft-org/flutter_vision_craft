@@ -1,9 +1,9 @@
 name: flutter_vision_craft
 description: Vision Craft AI Image generator flutter package.
-homepage: https://github.com/KarlMathuthu/flutter_vision_craft
-repository: https://github.com/KarlMathuthu/flutter_vision_craft
-issue_tracker: https://github.com/KarlMathuthu/flutter_vision_craft/issues
-version: 1.2.2
+homepage: https://github.com/VisionCraft-org/flutter_vision_craft
+repository: https://github.com/VisionCraft-org/flutter_vision_craft
+issue_tracker: https://github.com/VisionCraft-org/flutter_vision_craft/issues
+version: 1.2.3
 
 topics:
   - ai

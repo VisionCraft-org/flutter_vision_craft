@@ -27,3 +27,7 @@
 ## 1.2.2
 
 - API URL changed 🔥🔥
+
+## 1.2.3
+
+- Added new parameter "watermark".
