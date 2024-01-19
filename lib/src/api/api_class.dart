@@ -82,7 +82,7 @@ class VisionCraft {
   }
 
   // Upscale Image.
-  static Future<Uint8List> upscaleImage({
+  Future<Uint8List> upscaleImage({
     required Uint8List image,
     required String token,
   }) async {
