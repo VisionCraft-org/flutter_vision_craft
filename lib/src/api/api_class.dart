@@ -81,6 +81,45 @@ class VisionCraft {
     }
   }
 
+  // Upscale Image.
+  static Future<Uint8List> upscaleImage({
+    required Uint8List image,
+    required String token,
+  }) async {
+    try {
+      // Encode image bytes to base64
+      String imageBase64 = base64Encode(image);
+
+      // Prepare payload
+      Map<String, String> payload = {
+        "token": token,
+        "image": imageBase64,
+      };
+
+      // API endpoint URL
+      String url = 'https://visioncraft-rs24.koyeb.app/beta/upscale';
+
+      // Set headers
+      Map<String, String> headers = {
+        "content-type": "application/json",
+      };
+
+      // Make HTTP POST request
+      var response = await http.post(Uri.parse(url),
+          headers: headers, body: jsonEncode(payload));
+
+      // Check if the request was successful (status code 200)
+      if (response.statusCode == 200) {
+        // Return the upscaled image as Uint8List
+        return Uint8List.fromList(response.bodyBytes);
+      } else {
+        throw Exception("Error: ${response.statusCode}");
+      }
+    } catch (e) {
+      throw Exception("Error: $e");
+    }
+  }
+
   // Get VisionCraft model List.
   Future<List<String>> getModelList() async {
     const apiUrl = "https://visioncraftapi--vladalek05.repl.co/models";
