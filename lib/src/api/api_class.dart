@@ -5,7 +5,7 @@ import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 
 class VisionCraft {
-  // Create image function.
+  // Create image.
   Future<Uint8List?> generateImage({
     required String apiKey,
     required String prompt,
@@ -53,18 +53,18 @@ class VisionCraft {
 
         return image;
       } else {
-        print("Error generating image: ${response.statusCode}");
-        // Handle error based on the status code
-        return null;
+        throw "Error generating image: ${response.statusCode}";
+        // print("Error generating image: ${response.statusCode}");
+        // return null;
       }
     } catch (error) {
-      print("Error generating image: $error");
-      // Handle error as needed
-      return null;
+      throw "Error generating image: $error";
+      // print("Error generating image: $error");
+      // return null;
     }
   }
 
-  // Fetch generated images function.
+  // Fetch generated images.
   Future<Uint8List?> fetchImage(String imageUrl) async {
     try {
       final response = await http.get(Uri.parse(imageUrl));
@@ -72,19 +72,21 @@ class VisionCraft {
       if (response.statusCode == 200) {
         return Uint8List.fromList(response.bodyBytes);
       } else {
-        print("Error fetching image: ${response.statusCode}");
-        return null;
+        throw "Error fetching image: ${response.statusCode}";
+        // print("Error fetching image: ${response.statusCode}");
+        // return null;
       }
     } catch (error) {
-      print("Error fetching image: $error");
-      return null;
+      throw "Error fetching image: $error";
+      // print("Error fetching image: $error");
+      // return null;
     }
   }
 
   // Upscale Image.
   Future<Uint8List> upscaleImage({
     required Uint8List image,
-    required String token,
+    required String apiKey,
   }) async {
     try {
       // Encode image bytes to base64
@@ -92,7 +94,7 @@ class VisionCraft {
 
       // Prepare payload
       Map<String, String> payload = {
-        "token": token,
+        "token": apiKey,
         "image": imageBase64,
       };
 
@@ -134,12 +136,14 @@ class VisionCraft {
             List<String>.from(json.decode(response.body));
         return models;
       } else {
-        print("Error fetching models: ${response.statusCode}");
-        return [];
+        throw "Error fetching models: ${response.statusCode}";
+        // print("Error fetching models: ${response.statusCode}");
+        // return [];
       }
     } catch (error) {
-      print("Error fetching models: $error");
-      return [];
+      throw "Error fetching models: $error";
+      // print("Error fetching models: $error");
+      // return [];
     }
   }
 
@@ -157,14 +161,14 @@ class VisionCraft {
             List<String>.from(json.decode(response.body));
         return samplers;
       } else {
-        print("Error fetching samplers: ${response.statusCode}");
-        // Handle error based on the status code
-        return [];
+        throw "Error fetching samplers: ${response.statusCode}";
+        // print("Error fetching samplers: ${response.statusCode}");
+        // return [];
       }
     } catch (error) {
-      print("Error fetching samplers: $error");
-      // Handle error as needed
-      return [];
+      throw "Error fetching samplers: $error";
+      // print("Error fetching samplers: $error");
+      // return [];
     }
   }
 }
