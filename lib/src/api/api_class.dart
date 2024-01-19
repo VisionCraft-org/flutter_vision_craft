@@ -1,4 +1,4 @@
-// Vision Craft AI flutter package by Karl Kiyotaka.
+/// vision Craft AI flutter package by @Karlmathuthu.
 
 import 'dart:convert';
 import 'dart:typed_data';
