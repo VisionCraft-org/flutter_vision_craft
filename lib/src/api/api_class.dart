@@ -122,7 +122,7 @@ class VisionCraft {
 
   // Get VisionCraft model List.
   Future<List<String>> getModelList() async {
-    const apiUrl = "https://visioncraftapi--vladalek05.repl.co/models";
+    const apiUrl = "https://visioncraft-rs24.koyeb.app/models";
 
     try {
       final response = await http.get(Uri.parse(apiUrl));
@@ -145,7 +145,7 @@ class VisionCraft {
 
   // Get all the available samplers.
   Future<List<String>> getSamplerList() async {
-    const apiUrl = "https://visioncraftapi--vladalek05.repl.co/samplers";
+    const apiUrl = "https://visioncraft-rs24.koyeb.app/samplers";
 
     try {
       final response = await http.get(Uri.parse(apiUrl));
