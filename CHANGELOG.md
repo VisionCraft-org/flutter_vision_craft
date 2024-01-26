@@ -32,7 +32,7 @@
 
 - Added new parameter "watermark".
 
-## 1.3.3 Major -v
+## 1.3.4 Major -v
 
 - Added XLModel use 🚀
 - Added Image 2 Image 🚀😁
