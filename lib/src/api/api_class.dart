@@ -1,4 +1,4 @@
-/// vision Craft AI flutter package by @Karlmathuthu.
+// vision Craft flutter package by https://www.github.com/karlmathuthu/
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -61,13 +61,9 @@ class VisionCraft {
         return image;
       } else {
         throw "Error generating image: ${response.statusCode}";
-        // print("Error generating image: ${response.statusCode}");
-        // return null;
       }
     } catch (error) {
       throw "Error generating image: $error";
-      // print("Error generating image: $error");
-      // return null;
     }
   }
 
@@ -313,3 +309,5 @@ class VisionCraft {
     }
   }
 }
+
+// Credits https://www.github.com/karlmathuthu/
