@@ -9,7 +9,8 @@ class VisionCraft {
   Future<Uint8List?> generateImage({
     required String apiKey,
     required String prompt,
-    required bool enableBadWords,
+    bool? nsfw_filter,
+    Map<String, dynamic>? loras,
     bool? watermark,
     String? negativePrompt,
     String? model,
@@ -28,7 +29,9 @@ class VisionCraft {
       "token": apiKey,
       "cfg_scale": cfgScale ?? 8,
       "steps": steps ?? 30,
-      "watermark": watermark,
+      // "watermark": watermark, // Removed becuase it caused invalid requests (422)
+      "loras": loras ?? {},
+      "nsfw_filter": nsfw_filter ?? false,
     };
 
     try {
