@@ -125,6 +125,42 @@ class VisionCraft {
     }
   }
 
+  // Image to Image
+  Future<Uint8List> img2img({
+    required Uint8List image,
+    required String apiKey,
+    required String prompt,
+    required double strength,
+    int? steps,
+  }) async {
+    String imageBase64 = base64Encode(image);
+
+    String url = "https://visioncraft-rs24.koyeb.app/img2img";
+
+    Map<String, String> headers = {
+      "content-type": "application/json",
+    };
+    final payload = {
+      "prompt": prompt,
+      "token": apiKey,
+      "steps": steps ?? 30,
+      "image": imageBase64,
+      "strength": strength,
+    };
+
+    // Make HTTP POST request
+    var response = await http.post(Uri.parse(url),
+        headers: headers, body: jsonEncode(payload));
+
+    // Check if the request was successful (status code 200)
+    if (response.statusCode == 200) {
+      // Return the upscaled image as Uint8List
+      return Uint8List.fromList(response.bodyBytes);
+    } else {
+      throw Exception("Error: ${response.statusCode}");
+    }
+  }
+
   // Get VisionCraft model List.
   Future<List<String>> getModelList() async {
     const apiUrl = "https://visioncraft-rs24.koyeb.app/models";
