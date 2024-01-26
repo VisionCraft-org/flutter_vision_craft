@@ -11,7 +11,7 @@ To use this package, add `flutter_vision_craft` as a dependency in your `pubspec
 
 ```yaml
 dependencies:
-  flutter_vision_craft: ^1.0.0
+  flutter_vision_craft: ^1.3.3
 ```
 
 Then run:
