@@ -38,4 +38,4 @@
 - Added Image 2 Image 🚀😁
 - Added Text 2 GIF 🚀🔥
 - Added Image Upscale 💻🌐
-- Added easy use of choosing samplers, models etc. Exaple - AIModels.anythingV5 ❤️😁
+- Added easy use of choosing samplers, models etc. Example - AIModels.anythingV5 ❤️😁
