@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
   /// [apiKey] get your free api key on https://t.me/VisionCraft_bot by sending /Key.
   String apiKey = "f14eb9f4-de2a-4299-9557-bc8545da9d01";
 
-  Future<void> createImage() async {
+  Future<void> useXLModel() async {
     String prompt = controller.text.trim().toString();
     final result = await visionCraft.useXLModel(
       apiKey: apiKey,
@@ -45,6 +45,17 @@ class _HomePageState extends State<HomePage> {
       prompt: prompt,
       model: XLModels.juggernautXLV5,
       xlResolution: XLResolution.r9x16,
+    );
+    imageResult = result;
+    isLoading = false;
+    setState(() {});
+  }
+
+  Future<void> createImage() async {
+    String prompt = controller.text.trim().toString();
+    final result = await visionCraft.generateImage(
+      apiKey: apiKey,
+      prompt: prompt,
     );
     imageResult = result;
     isLoading = false;
@@ -76,7 +87,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const PopupMenuItem<int>(
                 value: 1,
-                child: Text("Get Sapmlers List"),
+                child: Text("Get Samplers List"),
               ),
             ];
           }, onSelected: (value) {

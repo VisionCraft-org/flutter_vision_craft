@@ -17,16 +17,16 @@ class VisionCraft {
     Map<String, dynamic>? loras,
     bool? watermark,
     String? negativePrompt,
-    String? model,
-    String? sampler,
+    AIModels? model,
+    Samplers? sampler,
     int? cfgScale,
     int? steps,
   }) async {
     var url = '$apiUrl/generate';
 
     final requestBody = {
-      "model": model ?? "anything_V5",
-      "sampler": sampler ?? "Euler",
+      "model": ModelConverter.getModel(model ?? AIModels.anythingV5),
+      "sampler": SamplerConverter.getSampler(sampler ?? Samplers.euler),
       "prompt": prompt,
       "negative_prompt": negativePrompt ?? "Blur",
       "image_count": 1,
@@ -223,7 +223,7 @@ class VisionCraft {
     String? negativePrompt,
     int? steps,
     int? cfgScale,
-    String? sampler,
+    Samplers? sampler,
   }) async {
     var url = "$apiUrl/generate-gif";
 
@@ -233,7 +233,7 @@ class VisionCraft {
     };
 
     Map<String, dynamic> data = {
-      "sampler": sampler ?? "Euler",
+      "sampler": SamplerConverter.getSampler(sampler ?? Samplers.euler),
       "prompt": prompt,
       "negative_prompt": negativePrompt ??
           "canvas frame, cartoon, 3d, ((disfigured)), ((bad art)), ((deformed)),((extra limbs)),((close up)),((b&w)), weird colors, blurry, (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), Photoshop, video game, ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, mutation, mutated, extra limbs, extra legs, extra arms, disfigured, deformed, cross-eye, body out of frame, blurry, bad art, bad anatomy, 3d render",
