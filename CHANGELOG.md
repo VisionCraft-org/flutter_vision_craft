@@ -31,3 +31,11 @@
 ## 1.2.3
 
 - Added new parameter "watermark".
+
+## 1.3.3 Major -v
+
+- Added XLModel use 🚀
+- Added Image 2 Image 🚀😁
+- Added Text 2 GIF 🚀🔥
+- Added Image Upscale 💻🌐
+- Added easy use of choosing samplers, models etc. Exaple - AIModels.anythingV5 ❤️😁
