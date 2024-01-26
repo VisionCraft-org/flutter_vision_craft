@@ -33,7 +33,7 @@ class VisionCraft {
       "token": apiKey,
       "cfg_scale": cfgScale ?? 8,
       "steps": steps ?? 30,
-      // "watermark": watermark, // Removed becuase it caused invalid requests (422)
+      "watermark": watermark ?? false,
       "loras": loras ?? {},
       "nsfw_filter": nsfw_filter ?? false,
     };
@@ -72,6 +72,7 @@ class VisionCraft {
     required String apiKey,
     required String prompt,
     required XLResolution xlResolution,
+    bool? watermark,
     bool? nsfwFilter,
     String? negativePrompt,
     XLModels? model,
@@ -89,7 +90,7 @@ class VisionCraft {
       "width": ResolutionConverter.getResolution(xlResolution).$2,
       "enhance": enhance ?? false,
       "nsfw_filter": nsfwFilter ?? false,
-      "watermark": false,
+      "watermark": watermark ?? false,
     };
 
     try {
