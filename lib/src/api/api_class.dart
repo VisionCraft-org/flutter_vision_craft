@@ -81,7 +81,7 @@ class VisionCraft {
     XLModels? model,
     bool? enhance,
   }) async {
-    var url = '$apiUrl/generate';
+    var url = '$apiUrl/generate-xl';
 
     final requestBody = {
       "model": EnumConverter.getXLModel(model ?? XLModels.sdxlBase),

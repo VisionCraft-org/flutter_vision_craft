@@ -39,9 +39,12 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> createImage() async {
     String prompt = controller.text.trim().toString();
-    final result = await visionCraft.generateImage(
+    final result = await visionCraft.useXLModel(
       apiKey: apiKey,
+      enhance: true,
       prompt: prompt,
+      model: XLModels.juggernautXLV5,
+      xlResolution: XLResolution.r9x16,
     );
     imageResult = result;
     isLoading = false;
@@ -139,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
-                              fit: BoxFit.cover,
+                              fit: BoxFit.none,
                               image: MemoryImage(imageResult!),
                             ),
                           ),
