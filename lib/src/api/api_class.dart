@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 
+String apiUrl = "https://visioncraft-rs24.koyeb.app";
+
 class VisionCraft {
   // Create image.
   Future<Uint8List?> generateImage({
@@ -18,7 +20,7 @@ class VisionCraft {
     int? cfgScale,
     int? steps,
   }) async {
-    const url = 'https://visioncraft-rs24.koyeb.app/generate';
+    var url = '$apiUrl/generate';
 
     final requestBody = {
       "model": model ?? "anything_V5",
@@ -102,7 +104,7 @@ class VisionCraft {
       };
 
       // API endpoint URL
-      String url = 'https://visioncraft-rs24.koyeb.app/beta/upscale';
+      String url = '$apiUrl/beta/upscale';
 
       // Set headers
       Map<String, String> headers = {
@@ -135,7 +137,7 @@ class VisionCraft {
   }) async {
     String imageBase64 = base64Encode(image);
 
-    String url = "https://visioncraft-rs24.koyeb.app/img2img";
+    String url = "$apiUrl/img2img";
 
     Map<String, String> headers = {
       "content-type": "application/json",
@@ -161,12 +163,56 @@ class VisionCraft {
     }
   }
 
+  // Text to GIF.
+
+  Future<String?> text2gif({
+    required String apiKey,
+    required String prompt,
+    String? negativePrompt,
+    int? steps,
+    int? cfgScale,
+    String? sampler,
+  }) async {
+    var url = "$apiUrl/generate-gif";
+
+    final headers = {
+      'accept': 'application/json',
+      'Content-Type': 'application/json',
+    };
+
+    Map<String, dynamic> data = {
+      "sampler": sampler ?? "Euler",
+      "prompt": prompt,
+      "negative_prompt": negativePrompt ??
+          "canvas frame, cartoon, 3d, ((disfigured)), ((bad art)), ((deformed)),((extra limbs)),((close up)),((b&w)), weird colors, blurry, (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), Photoshop, video game, ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, mutation, mutated, extra limbs, extra legs, extra arms, disfigured, deformed, cross-eye, body out of frame, blurry, bad art, bad anatomy, 3d render",
+      "token": apiKey,
+      "cfg_scale": cfgScale ?? 8,
+      "steps": steps ?? 30,
+    };
+
+    // Send the request to generate images
+    final response = await http.post(
+      Uri.parse(url),
+      headers: headers,
+      body: jsonEncode(data),
+    );
+
+    // Check if the request was successful
+    if (response.statusCode == 200) {
+      // Extract the image URL from the response
+      String imageUrl = json.decode(response.body)["images"][0];
+      return imageUrl;
+    } else {
+      throw "Failed to generate GIF. Status code: ${response.statusCode}";
+    }
+  }
+
   // Get VisionCraft model List.
   Future<List<String>> getModelList() async {
-    const apiUrl = "https://visioncraft-rs24.koyeb.app/models";
+    var url = "$apiUrl/models";
 
     try {
-      final response = await http.get(Uri.parse(apiUrl));
+      final response = await http.get(Uri.parse(url));
 
       // Check if the request was successful (status code 200)
       if (response.statusCode == 200) {
@@ -188,10 +234,10 @@ class VisionCraft {
 
   // Get all the available samplers.
   Future<List<String>> getSamplerList() async {
-    const apiUrl = "https://visioncraft-rs24.koyeb.app/samplers";
+    var url = "$apiUrl/samplers";
 
     try {
-      final response = await http.get(Uri.parse(apiUrl));
+      final response = await http.get(Uri.parse(url));
 
       // Check if the request was successful (status code 200)
       if (response.statusCode == 200) {
