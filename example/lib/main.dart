@@ -43,8 +43,9 @@ class _HomePageState extends State<HomePage> {
       apiKey: apiKey,
       enhance: true,
       prompt: prompt,
-      model: XLModels.juggernautXLV5,
-      xlResolution: XLResolution.r9x16,
+      nsfwFilter: false,
+      model: XLModels.animeArtDiffusionXL,
+      xlResolution: XLResolution.r1x1,
     );
     imageResult = result;
     isLoading = false;
@@ -56,6 +57,10 @@ class _HomePageState extends State<HomePage> {
     final result = await visionCraft.generateImage(
       apiKey: apiKey,
       prompt: prompt,
+      sampler: Samplers.euler,
+      model: AIModels.anythingV45,
+      watermark: false,
+      nsfw_filter: true,
     );
     imageResult = result;
     isLoading = false;
@@ -146,18 +151,7 @@ class _HomePageState extends State<HomePage> {
                       ? const Center(
                           child: Text("Enter prompt to create image"),
                         )
-                      : Container(
-                          height: 300,
-                          margin: const EdgeInsets.all(8.0),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              fit: BoxFit.none,
-                              image: MemoryImage(imageResult!),
-                            ),
-                          ),
-                        ),
+                      : Image.memory(imageResult!),
                 ],
               ),
             ),

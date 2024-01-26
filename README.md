@@ -1,46 +1,165 @@
-# VisionCraft Flutter Package
+`flutter_vision_craft` package:
 
-A Flutter package for interacting with the VisionCraft API for image generation.
+```markdown
+# Vision Craft Flutter Package
 
-## Getting Started
+`flutter_vision_craft` is a Flutter package for interacting with the VisionCraft API, allowing you to generate images, upscale images, perform image-to-image transformations, and more.
 
-To use this package, add the following to your `pubspec.yaml` file:
+## Installation
+
+To use this package, add `flutter_vision_craft` as a dependency in your `pubspec.yaml` file.
 
 ```yaml
 dependencies:
-  flutter_vision_craft: ^latest
-  ```
-Then, run ```flutter pub get``` to install the package.
+  flutter_vision_craft: ^1.0.0
+```
 
-### Example to generate image
+Then run:
 
-To obtain your free api key, go to https://t.me/VisionCraft_bot then send /Key.
+```bash
+flutter pub get
+```
+
+## Usage
+
+Import the package in your Dart file:
 
 ```dart
-final VisionCraft visionCraft = VisionCraft();
-  Uint8List? imageResult;
-  bool? isLoading;
+import 'package:flutter_vision_craft/flutter_vision_craft.dart';
+```
 
-  /// [apiKey] get your free api key on https://t.me/VisionCraft_bot by sending /Key.
-  String apiKey = "f14eb9f4----";
+### VisionCraft Class
+
+The `VisionCraft` class provides methods for interacting with the VisionCraft API.
+
+#### Generating Images
+
+```dart
+Future<Uint8List?> generateImage({
+  required String apiKey,
+  required String prompt,
+  sampler: Samplers.euler,
+  model: AIModels.anythingV45,
+  watermark: false,
+  nsfw_filter: true,
+  // ... other optional parameters
+}) async {
+  // ... implementation details
+}
+```
+
+#### Using XL Model
+
+```dart
+Future<Uint8List?> useXLModel({
+  required String apiKey,
+  required String prompt,
+  enhance: true,
+  prompt: prompt,
+  nsfwFilter: false,
+  model: XLModels.animeArtDiffusionXL,
+  xlResolution: XLResolution.r1x1,
+  // ... other optional parameters
+}) async {
+  // ... implementation details
+}
+```
+
+#### Upscaling Image
+
+```dart
+Future<Uint8List> upscaleImage({
+  required Uint8List image,
+  required String apiKey,
+}) async {
+  // ... implementation details
+}
+```
+
+#### Image to Image Transformation
+
+```dart
+Future<Uint8List> img2img({
+  required Uint8List image,
+  required String apiKey,
+  // ... other required parameters
+}) async {
+  // ... implementation details
+}
+```
+
+#### Text to GIF
+
+```dart
+Future<String?> text2gif({
+  required String apiKey,
+  required String prompt,
+  // ... other optional parameters
+}) async {
+  // ... implementation details
+}
+```
+
+#### Get VisionCraft Model List
+
+```dart
+Future<List<String>> getModelList() async {
+  // ... implementation details
+}
+```
+
+#### Get Sampler List
+
+```dart
+Future<List<String>> getSamplerList() async {
+  // ... implementation details
+}
+```
+
+## Examples
+
+Here are some examples of using the `flutter_vision_craft` package:
+
+```dart
+// These examples can be found in /example folder
+
+// Use XLModels. 
+
+ Future<void> useXLModel() async {
+    String prompt = controller.text.trim().toString();
+    final result = await visionCraft.useXLModel(
+      apiKey: apiKey,
+      enhance: true,
+      prompt: prompt,
+      nsfwFilter: false,
+      model: XLModels.animeArtDiffusionXL,
+      xlResolution: XLResolution.r1x1,
+    );
+    imageResult = result;
+    isLoading = false;
+    setState(() {});
+  }
+
+  // Use Normal Models
 
   Future<void> createImage() async {
     String prompt = controller.text.trim().toString();
     final result = await visionCraft.generateImage(
       apiKey: apiKey,
       prompt: prompt,
-      enableBadWords: false,
+      sampler: Samplers.euler,
+      model: AIModels.anythingV45,
+      watermark: false,
+      nsfw_filter: true,
     );
     imageResult = result;
     isLoading = false;
     setState(() {});
   }
-```
 
-### Example to get the models List.
+  // Get Models List
 
-```dart
-List<String> models = [];
+   List<String> models = [];
   final VisionCraft visionCraft = VisionCraft();
 
   Future<void> getModelList() async {
@@ -54,17 +173,9 @@ List<String> models = [];
     setState(() {});
   }
 
-  @override
-  void initState() {
-    super.initState();
-    getModelList();
-  }
-```
+// Get Samplers List
 
-### Example to get samplers List.
-
-```dart
- List<String> samplers = [];
+List<String> samplers = [];
   final VisionCraft visionCraft = VisionCraft();
 
   Future<void> getSamplersList() async {
@@ -77,64 +188,15 @@ List<String> models = [];
     }
     setState(() {});
   }
-
-  @override
-  void initState() {
-    super.initState();
-    getSamplersList();
-  }
 ```
 
-## Documentaion
+## Credits
 
-Refer to the https://github.com/Metim0l/VisionCraft for more details on available models, samplers, and API usage.
+This package is developed by [Karl Mathuthu](https://www.github.com/karlmathuthu/).
 
-## Issues and Contributions
+Feel free to explore the API documentation for more details on available methods and parameters.
 
-If you encounter any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
-
-## License
-
-```license
-BSD 3-Clause License
-
-Copyright (c) 2023 Karl Mathuthu
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its
-   contributors may be used to endorse or promote products derived from
-   this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**Note:** Make sure to replace `^1.3.3` with the latest version of the package available.
 ```
 
-## Developers
-
-### Karlmathuthu
-
-Karlmathuthu is a passionate developer with expertise in Flutter frontend developemnt as well as PHP & MongoDb for backend. You can find more about Karlmathuthu on [GitHub](https://github.com/Karlmathuthu) and connect on [Telegram](https://www.t.me/karlkiyotaka/).
-
-### Metimol
-
-Metimol is a skilled developer specializing in python backend developemnt. Explore more of Metimol's work on [GitHub](https://github.com/Metim0l) and reach out on [Telegram](https://www.t.me/metimol/).
-
-Feel free to contact either of the developers for inquiries, collaboration, or just to say hello!
+Feel Free to contact me on Telegram - https//t.me/karlkiyotaka/

@@ -89,6 +89,7 @@ class VisionCraft {
       "width": ResolutionConverter.getResolution(xlResolution).$2,
       "enhance": enhance ?? false,
       "nsfw_filter": nsfwFilter ?? false,
+      "watermark": false,
     };
 
     try {
