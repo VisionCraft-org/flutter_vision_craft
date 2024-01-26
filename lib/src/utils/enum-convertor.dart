@@ -1,6 +1,6 @@
 import 'package:flutter_vision_craft/src/utils/enum-class.dart';
 
-class ModelConverter {
+class EnumConverter {
   static String getXLModel(XLModels model) {
     switch (model) {
       case XLModels.deliberateV3:
@@ -28,18 +28,18 @@ class ModelConverter {
 }
 
 class ResolutionConverter {
-  static String getResolution(Resolutions resolution) {
+  static (String, String) getResolution(XLResolution resolution) {
     switch (resolution) {
-      case Resolutions.r1x1:
-        return "1024x1024";
-      case Resolutions.r16x9:
-        return "1024x576";
-      case Resolutions.r9x16:
-        return "576x1024";
-      case Resolutions.r3x2:
-        return "1024x680";
-      case Resolutions.r2x3:
-        return "680x1024";
+      case XLResolution.r1x1:
+        return ("1024", "1024");
+      case XLResolution.r16x9:
+        return ("1024", "576");
+      case XLResolution.r9x16:
+        return ("576", "1024");
+      case XLResolution.r3x2:
+        return ("1024", "680");
+      case XLResolution.r2x3:
+        return ("680", "1024");
     }
   }
 }

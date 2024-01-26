@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 import 'dart:typed_data';
+import 'package:flutter_vision_craft/src/utils/enum-class.dart';
+import 'package:flutter_vision_craft/src/utils/enum-convertor.dart';
 import 'package:http/http.dart' as http;
 
 String apiUrl = "https://visioncraft-rs24.koyeb.app";
@@ -66,6 +68,60 @@ class VisionCraft {
       throw "Error generating image: $error";
       // print("Error generating image: $error");
       // return null;
+    }
+  }
+
+  // Use XL model
+  Future<Uint8List?> useXLModel({
+    required String apiKey,
+    required String prompt,
+    required XLResolution xlResolution,
+    bool? nsfwFilter,
+    String? negativePrompt,
+    XLModels? model,
+    bool? enhance,
+  }) async {
+    var url = '$apiUrl/generate';
+
+    final requestBody = {
+      "model": EnumConverter.getXLModel(model ?? XLModels.sdxlBase),
+      "prompt": prompt,
+      "negative_prompt": negativePrompt ?? "bad quality",
+      "image_count": 1,
+      "token": apiKey,
+      "height": ResolutionConverter.getResolution(xlResolution).$1,
+      "width": ResolutionConverter.getResolution(xlResolution).$2,
+      "enhance": enhance ?? false,
+      "nsfw_filter": nsfwFilter ?? false,
+    };
+
+    try {
+      final headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+      };
+
+      final response = await http.post(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
+
+      // Check if the request was successful (status code 200)
+      if (response.statusCode == 200) {
+        // Extract image URL from the response
+        final imageUrl =
+            List<String>.from(json.decode(response.body)["images"]).first;
+
+        // Fetch and return the image as Uint8List
+        final Uint8List? image = await fetchImage(imageUrl);
+
+        return image;
+      } else {
+        throw "Error generating image: ${response.statusCode}";
+      }
+    } catch (error) {
+      throw "Error generating image: $error";
     }
   }
 

@@ -11,7 +11,7 @@ enum XLModels {
   animeArtDiffusionXL,
 }
 
-enum Resolutions {
+enum XLResolution {
   ///1024 x 1024
   r1x1,
 
