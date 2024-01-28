@@ -39,3 +39,7 @@
 - Added Text 2 GIF 🚀🔥
 - Added Image Upscale 💻🌐
 - Added easy use of choosing samplers, models etc. Example - AIModels.anythingV5 ❤️😁
+
+## 1.3.6
+
+- API Url fixed.
