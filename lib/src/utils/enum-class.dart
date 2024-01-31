@@ -1,13 +1,9 @@
 enum XLModels {
-  deliberateV3,
-  dreamshaperV8,
-  swizz8,
-  juggernautXL,
   sdxlBase,
   sdxlRefiner,
-  sdxlTurbo,
+  sdxlturbo,
   juggernautXLV5,
-  dynavisionXL,
+  dynavisionXl,
   animeArtDiffusionXL,
 }
 

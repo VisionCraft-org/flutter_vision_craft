@@ -3,23 +3,15 @@ import 'package:flutter_vision_craft/src/utils/enum-class.dart';
 class EnumConverter {
   static String getXLModel(XLModels model) {
     switch (model) {
-      case XLModels.deliberateV3:
-        return "deliberate-v3";
-      case XLModels.dreamshaperV8:
-        return "dreamshaper-v8";
-      case XLModels.swizz8:
-        return "swizz8";
-      case XLModels.juggernautXL:
-        return "juggernaut-xl";
       case XLModels.sdxlBase:
         return "sdxl-base";
       case XLModels.sdxlRefiner:
         return "sdxl-refiner";
-      case XLModels.sdxlTurbo:
+      case XLModels.sdxlturbo:
         return "sdxl-turbo";
       case XLModels.juggernautXLV5:
         return "juggernaut-xl-V5";
-      case XLModels.dynavisionXL:
+      case XLModels.dynavisionXl:
         return "dynavision-xl-all-in-one-stylized";
       case XLModels.animeArtDiffusionXL:
         return "anime-art-diffusion-xl";
