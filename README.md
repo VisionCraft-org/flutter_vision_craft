@@ -8,6 +8,8 @@
 ## Installation
 
 To use this package, add `flutter_vision_craft` as a dependency in your `pubspec.yaml` file.
+```
+
 
 ```yaml
 dependencies:
@@ -89,6 +91,8 @@ Future<Uint8List> img2img({
 ```
 
 #### Text to GIF
+
+#### Returns a string of image url
 
 ```dart
 Future<String?> text2gif({
