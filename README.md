@@ -11,7 +11,6 @@ Contact (https://t.me/Metimol)
 ## Installation
 
 To use this package, add `flutter_vision_craft` as a dependency in your `pubspec.yaml` file.
-```
 
 
 ```yaml
