@@ -43,3 +43,9 @@
 ## 1.3.6
 
 - API Url fixed.
+
+## 1.4.6
+
+- Fixed the Premium XL Models. 🚀
+- Optimized code. 🔥
+- Easy code implementation. ❤️

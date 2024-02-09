@@ -203,7 +203,7 @@ This package is developed by [Karl Mathuthu](https://www.github.com/karlmathuthu
 
 Feel free to explore the API documentation for more details on available methods and parameters.
 
-**Note:** Make sure to replace `^1.3.3` with the latest version of the package available.
+**Note:** Make sure to replace `^1.4.6` with the latest version of the package available.
 
 
 Feel Free to contact me on Telegram - https//t.me/karlkiyotaka/
