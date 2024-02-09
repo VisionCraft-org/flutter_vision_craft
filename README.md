@@ -1,9 +1,12 @@
 `flutter_vision_craft` package:
 
-```markdown
 # Vision Craft Flutter Package
 
 `flutter_vision_craft` is a Flutter package for interacting with the VisionCraft API, allowing you to generate images, upscale images, perform image-to-image transformations, and more.
+
+# For Premium account
+
+Contact (https://t.me/Metimol)
 
 ## Installation
 
@@ -50,21 +53,22 @@ Future<Uint8List?> generateImage({
 }
 ```
 
-#### Using XL Model
+#### Using XL Model (PREMIUM) - Contact https://t.me/Metimol
 
 ```dart
-Future<Uint8List?> useXLModel({
-  required String apiKey,
-  required String prompt,
-  enhance: true,
-  prompt: prompt,
-  nsfwFilter: false,
-  model: XLModels.animeArtDiffusionXL,
-  xlResolution: XLResolution.r1x1,
-  // ... other optional parameters
-}) async {
-  // ... implementation details
-}
+  Future<void> useXLModel() async {
+    String prompt = controller.text.trim().toString();
+    final result = await visionCraft.useXLModel(
+      apiKey: apiKey,
+      enhance: true,
+      prompt: prompt,
+      nsfwFilter: false,
+      model: XLModels.sdxlBase,
+      xlResolution: XLResolution.r1x1,
+    );
+    imageResult = result;
+    setState(() {});
+  }
 ```
 
 #### Upscaling Image
@@ -201,6 +205,6 @@ This package is developed by [Karl Mathuthu](https://www.github.com/karlmathuthu
 Feel free to explore the API documentation for more details on available methods and parameters.
 
 **Note:** Make sure to replace `^1.3.3` with the latest version of the package available.
-```
+
 
 Feel Free to contact me on Telegram - https//t.me/karlkiyotaka/
