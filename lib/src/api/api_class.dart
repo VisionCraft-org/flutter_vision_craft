@@ -109,14 +109,7 @@ class VisionCraft {
 
       // Check if the request was successful (status code 200)
       if (response.statusCode == 200) {
-        // Extract image URL from the response
-        final imageUrl =
-            List<String>.from(json.decode(response.body)["images"]).first;
-
-        // Fetch and return the image as Uint8List
-        final Uint8List? image = await fetchImage(imageUrl);
-
-        return image;
+        return response.bodyBytes;
       } else {
         throw "Error generating image: ${response.statusCode}";
       }
