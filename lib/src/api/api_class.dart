@@ -69,6 +69,8 @@ class VisionCraft {
     }
   }
 
+  // PREMIUM
+
   // Use XL model
   Future<Uint8List?> useXLModel({
     required String apiKey,
@@ -86,13 +88,10 @@ class VisionCraft {
       "model": EnumConverter.getXLModel(model ?? XLModels.sdxlBase),
       "prompt": prompt,
       "negative_prompt": negativePrompt ?? "bad quality",
-      "image_count": 1,
       "token": apiKey,
       "height": ResolutionConverter.getResolution(xlResolution).$1,
       "width": ResolutionConverter.getResolution(xlResolution).$2,
-      "enhance": enhance ?? false,
       "nsfw_filter": nsfwFilter ?? false,
-      "watermark": watermark ?? false,
     };
 
     try {
@@ -110,12 +109,16 @@ class VisionCraft {
       // Check if the request was successful (status code 200)
       if (response.statusCode == 200) {
         return response.bodyBytes;
+      } else if (response.statusCode == 413) {
+        throw "Subscribe to premium with only \$5";
       } else {
         throw "Error generating image: ${response.statusCode}";
       }
     } catch (error) {
-      throw "Error generating image: $error";
+      print(error);
+      // throw "Error generating image: $error";
     }
+    return null;
   }
 
   // Fetch generated images.

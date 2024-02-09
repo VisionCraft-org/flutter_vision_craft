@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       enhance: true,
       prompt: prompt,
       nsfwFilter: false,
-      model: XLModels.animeArtDiffusionXL,
+      model: XLModels.sdxlBase,
       xlResolution: XLResolution.r1x1,
     );
     imageResult = result;
@@ -158,10 +158,9 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
         onPressed: () {
-          /// Create image and set loading to true [createImage()]
           isLoading = true;
           setState(() {});
-          createImage();
+          useXLModel();
         },
         child: const Icon(
           Icons.create,
