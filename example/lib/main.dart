@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       prompt: prompt,
       aiStyle: AIStyles.cartoon,
       nsfwFilter: false,
-      model: XLModels.sdxlBase,
+      model: XLModels.juggernautXLV5,
       xlResolution: XLResolution.r1x1,
     );
     imageResult = result;
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
     final result = await visionCraft.generateImage(
       apiKey: apiKey,
       prompt: prompt,
-      aiStyle: AIStyles.anime,
+      aiStyle: AIStyles.cyberpunk,
       sampler: Samplers.euler,
       model: AIModels.anythingV45,
       watermark: false,
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           isLoading = true;
           setState(() {});
-          useXLModel();
+          createImage();
         },
         child: const Icon(
           Icons.create,
