@@ -43,6 +43,7 @@ class _HomePageState extends State<HomePage> {
       apiKey: apiKey,
       enhance: true,
       prompt: prompt,
+      aiStyle: AIStyles.cartoon,
       nsfwFilter: false,
       model: XLModels.sdxlBase,
       xlResolution: XLResolution.r1x1,
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
     final result = await visionCraft.generateImage(
       apiKey: apiKey,
       prompt: prompt,
+      aiStyle: AIStyles.anime,
       sampler: Samplers.euler,
       model: AIModels.anythingV45,
       watermark: false,

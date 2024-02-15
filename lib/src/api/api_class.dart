@@ -15,6 +15,7 @@ class VisionCraft {
   Future<Uint8List?> generateImage({
     required String apiKey,
     required String prompt,
+    required AIStyles aiStyle,
     bool? nsfw_filter,
     Map<String, dynamic>? loras,
     bool? watermark,
@@ -29,7 +30,7 @@ class VisionCraft {
     final requestBody = {
       "model": ModelConverter.getModel(model ?? AIModels.anythingV5),
       "sampler": SamplerConverter.getSampler(sampler ?? Samplers.euler),
-      "prompt": prompt,
+      "prompt": "$prompt ${AIStylesConvertor.getAIStyle(aiStyle)}",
       "negative_prompt": negativePrompt ?? "Blur",
       "image_count": 1,
       "token": apiKey,
@@ -76,6 +77,7 @@ class VisionCraft {
     required String apiKey,
     required String prompt,
     required XLResolution xlResolution,
+    required AIStyles aiStyle,
     bool? watermark,
     bool? nsfwFilter,
     String? negativePrompt,
@@ -86,7 +88,7 @@ class VisionCraft {
 
     final requestBody = {
       "model": EnumConverter.getXLModel(model ?? XLModels.sdxlBase),
-      "prompt": prompt,
+      "prompt": "$prompt ${AIStylesConvertor.getAIStyle(aiStyle)}",
       "negative_prompt": negativePrompt ?? "bad quality",
       "token": apiKey,
       "height": ResolutionConverter.getResolution(xlResolution).$1,
