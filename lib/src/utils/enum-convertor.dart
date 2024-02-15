@@ -203,3 +203,48 @@ class ResolutionConverter {
     }
   }
 }
+
+class AIStylesConvertor {
+  static getAIStyle(AIStyles aiStyles) {
+    switch (aiStyles) {
+      case AIStyles.anime:
+        return "using Anime style";
+      case AIStyles.abstract:
+        return "";
+      case AIStyles.cartoon:
+        return "in cartoon style";
+      case AIStyles.cinematic:
+        return "cinematic style";
+      case AIStyles.comics:
+        return "in comics style";
+      case AIStyles.concerptArt:
+        return "make it concerpt art style";
+      case AIStyles.cyberpunk:
+        return "in cyberpunk style";
+      case AIStyles.disco:
+        return "make image disco style";
+      case AIStyles.dreamescape:
+        return "make the image be like a dream";
+      case AIStyles.fantasy:
+        return "in fantasy style";
+      case AIStyles.futuristic:
+        return "make it like a future image";
+      case AIStyles.hyperrealistic:
+        return "make it realistic";
+      case AIStyles.lineArt:
+        return "in line art style";
+      case AIStyles.neonPunk:
+        return "in neon punk style";
+      case AIStyles.popArt:
+        return "in pop art style";
+      case AIStyles.portrait:
+        return "as a potrait image";
+      case AIStyles.scifi:
+        return "make it science fiction image";
+      case AIStyles.steamPunk:
+        return "as a steam punk style";
+      case AIStyles.vintage:
+        return "in vintage style";
+    }
+  }
+}
