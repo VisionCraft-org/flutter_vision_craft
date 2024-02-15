@@ -106,3 +106,25 @@ enum XLResolution {
   ///680 x 1024.
   r2x3
 }
+
+enum AIStyles {
+  anime,
+  cartoon,
+  vintage,
+  cinematic,
+  comics,
+  concerptArt,
+  fantasy,
+  neonPunk,
+  abstract,
+  hyperrealistic,
+  popArt,
+  steamPunk,
+  futuristic,
+  scifi,
+  cyberpunk,
+  disco,
+  dreamescape,
+  portrait,
+  lineArt,
+}
