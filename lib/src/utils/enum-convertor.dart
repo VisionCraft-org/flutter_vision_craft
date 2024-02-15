@@ -205,46 +205,46 @@ class ResolutionConverter {
 }
 
 class AIStylesConvertor {
-  static getAIStyle(AIStyles aiStyles) {
+  static getAIStyle(AIStyles aiStyles, String prompt) {
     switch (aiStyles) {
       case AIStyles.anime:
-        return "using Anime style";
+        return "anime artwork $prompt . anime style, key visual, vibrant, studio anime, highly detailed";
       case AIStyles.abstract:
-        return "";
+        return "abstract style $prompt . non-representational, colors and shapes, expression of feelings, imaginative, highly detailed";
       case AIStyles.cartoon:
-        return "in cartoon style";
+        return "comic $prompt . graphic illustration, comic art, graphic novel art, vibrant, highly detailed";
       case AIStyles.cinematic:
-        return "cinematic style";
+        return "cinematic film still $prompt . shallow depth of field, vignette, highly detailed, high budget, bokeh, cinemascope, moody, epic, gorgeous, film grain, grainy";
       case AIStyles.comics:
-        return "in comics style";
+        return "comic $prompt . graphic illustration, comic art, graphic novel art, vibrant, highly detailed";
       case AIStyles.concerptArt:
-        return "make it concerpt art style";
+        return "concept art $prompt . digital artwork, illustrative, painterly, matte painting, highly detailed";
       case AIStyles.cyberpunk:
-        return "in cyberpunk style";
+        return "cyberpunk game style $prompt . neon, dystopian, futuristic, digital, vibrant, detailed, high contrast, reminiscent of cyberpunk genre video games";
       case AIStyles.disco:
-        return "make image disco style";
+        return "disco-themed $prompt . vibrant, groovy, retro 70s style, shiny disco balls, neon lights, dance floor, highly detailed";
       case AIStyles.dreamescape:
-        return "make the image be like a dream";
+        return "dreamscape $prompt . surreal, ethereal, dreamy, mysterious, fantasy, highly detailed";
       case AIStyles.fantasy:
-        return "in fantasy style";
+        return "ethereal fantasy concept art of $prompt . magnificent, celestial, ethereal, painterly, epic, majestic, magical, fantasy art, cover art, dreamy";
       case AIStyles.futuristic:
-        return "make it like a future image";
+        return "futuristic style $prompt . sleek, modern, ultramodern, high tech, detailed";
       case AIStyles.hyperrealistic:
-        return "make it realistic";
+        return "hyperrealistic art $prompt . extremely high-resolution details, photographic, realism pushed to extreme, fine texture, incredibly lifelike";
       case AIStyles.lineArt:
-        return "in line art style";
+        return "line art drawing $prompt . professional, sleek, modern, minimalist, graphic, line art, vector graphics";
       case AIStyles.neonPunk:
-        return "in neon punk style";
+        return "neonpunk style $prompt . cyberpunk, vaporwave, neon, vibes, vibrant, stunningly beautiful, crisp, detailed, sleek, ultramodern, magenta highlights, dark purple shadows, high contrast, cinematic, ultra detailed, intricate, professional";
       case AIStyles.popArt:
-        return "in pop art style";
+        return "pop Art style $prompt . bright colors, bold outlines, popular culture themes, ironic or kitsch";
       case AIStyles.portrait:
-        return "as a potrait image";
+        return "$prompt close up portrait photography, Realistic face, Natutal photography, Ultra HD";
       case AIStyles.scifi:
-        return "make it science fiction image";
+        return "sci-fi style $prompt . futuristic, technological, alien worlds, space themes, advanced civilizations";
       case AIStyles.steamPunk:
-        return "as a steam punk style";
+        return "steampunk style $prompt . antique, mechanical, brass and copper tones, gears, intricate, detailed";
       case AIStyles.vintage:
-        return "in vintage style";
+        return "analog film photo $prompt . faded film, desaturated, 35mm photo, grainy, vignette, vintage, Kodachrome, Lomography, stained, highly detailed, found footage";
     }
   }
 }

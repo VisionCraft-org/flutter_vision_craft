@@ -30,7 +30,7 @@ class VisionCraft {
     final requestBody = {
       "model": ModelConverter.getModel(model ?? AIModels.anythingV5),
       "sampler": SamplerConverter.getSampler(sampler ?? Samplers.euler),
-      "prompt": "$prompt ${AIStylesConvertor.getAIStyle(aiStyle)}",
+      "prompt": AIStylesConvertor.getAIStyle(aiStyle, prompt),
       "negative_prompt": negativePrompt ?? "Blur",
       "image_count": 1,
       "token": apiKey,
@@ -88,7 +88,7 @@ class VisionCraft {
 
     final requestBody = {
       "model": EnumConverter.getXLModel(model ?? XLModels.sdxlBase),
-      "prompt": "$prompt ${AIStylesConvertor.getAIStyle(aiStyle)}",
+      "prompt": AIStylesConvertor.getAIStyle(aiStyle, prompt),
       "negative_prompt": negativePrompt ?? "bad quality",
       "token": apiKey,
       "height": ResolutionConverter.getResolution(xlResolution).$1,
