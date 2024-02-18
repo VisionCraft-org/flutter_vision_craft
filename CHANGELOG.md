@@ -53,3 +53,7 @@
 ## 2.0.0
 
 - Added new 19 AI Styles, this is how you use it "aiStyle: AIStyles.cartoon" 🔥❤️
+
+## 2.0.1
+
+- API Url updated.
