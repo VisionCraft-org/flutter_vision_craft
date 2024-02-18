@@ -6,9 +6,7 @@ import 'package:flutter_vision_craft/src/utils/enum-class.dart';
 import 'package:flutter_vision_craft/src/utils/enum-convertor.dart';
 import 'package:http/http.dart' as http;
 
-String apiUrl = "https://visioncraft-rs24.koyeb.app";
-
-// String apiUrl = "https://perfect-foal-tweed-jacket.cyclic.app";
+String apiUrl = "https://api.visioncraft.top";
 
 class VisionCraft {
   // Create image.
