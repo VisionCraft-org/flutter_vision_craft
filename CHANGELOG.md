@@ -57,3 +57,7 @@
 ## 2.0.1
 
 - API Url updated.
+
+## 2.0.2
+
+- Updated XLModels.

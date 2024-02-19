@@ -1,10 +1,10 @@
 enum XLModels {
   sdxlBase,
-  sdxlRefiner,
   sdxlturbo,
-  juggernautXLV5,
+  juggernautXLV7,
   dynavisionXl,
   animeArtDiffusionXL,
+  playgroundV2,
 }
 
 enum AIModels {

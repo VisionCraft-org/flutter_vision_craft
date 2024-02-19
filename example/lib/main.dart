@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       prompt: prompt,
       aiStyle: AIStyles.cartoon,
       nsfwFilter: false,
-      model: XLModels.juggernautXLV5,
+      model: XLModels.juggernautXLV7,
       xlResolution: XLResolution.r1x1,
     );
     imageResult = result;

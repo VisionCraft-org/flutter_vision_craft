@@ -5,16 +5,16 @@ class EnumConverter {
     switch (model) {
       case XLModels.sdxlBase:
         return "sdxl-base";
-      case XLModels.sdxlRefiner:
-        return "sdxl-refiner";
       case XLModels.sdxlturbo:
         return "sdxl-turbo";
-      case XLModels.juggernautXLV5:
-        return "juggernaut-xl-V5";
+      case XLModels.juggernautXLV7:
+        return "juggernaut-xl-V7";
       case XLModels.dynavisionXl:
         return "dynavision-xl-all-in-one-stylized";
       case XLModels.animeArtDiffusionXL:
         return "anime-art-diffusion-xl";
+      case XLModels.playgroundV2:
+        return "playground-V2";
     }
   }
 }
