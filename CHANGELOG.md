@@ -61,3 +61,7 @@
 ## 2.0.2
 
 - Updated XLModels.
+
+## 2.0.3
+
+- Removed Playground V2 Model 😭🥹
