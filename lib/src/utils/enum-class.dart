@@ -4,7 +4,6 @@ enum XLModels {
   juggernautXLV7,
   dynavisionXl,
   animeArtDiffusionXL,
-  playgroundV2,
 }
 
 enum AIModels {

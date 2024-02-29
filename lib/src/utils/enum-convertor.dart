@@ -13,8 +13,6 @@ class EnumConverter {
         return "dynavision-xl-all-in-one-stylized";
       case XLModels.animeArtDiffusionXL:
         return "anime-art-diffusion-xl";
-      case XLModels.playgroundV2:
-        return "playground-V2";
     }
   }
 }
