@@ -37,7 +37,7 @@ import 'package:flutter_vision_craft/flutter_vision_craft.dart';
 
 ```dart
 
-// Late init for Vision Craft class.
+// Late init Vision Craft class.
 
  late VisionCraft visionCraft;
 
