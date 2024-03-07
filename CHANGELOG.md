@@ -65,3 +65,9 @@
 ## 2.0.3
 
 - Removed Playground V2 Model 😭🥹
+
+## 2.1.3
+
+- Changed api url.
+- Changed how you initialize the package, check on example or readMe.md
+- Added custom api url but it is optional. (For Experienced developers only)
