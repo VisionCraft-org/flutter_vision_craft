@@ -32,15 +32,35 @@ Import the package in your Dart file:
 import 'package:flutter_vision_craft/flutter_vision_craft.dart';
 ```
 
-### VisionCraft Class
+### Initialize VisionCraft Class
 
-The `VisionCraft` class provides methods for interacting with the VisionCraft API.
 
+```dart
+
+// Late init for Vision Craft class.
+
+ late VisionCraft visionCraft;
+
+ // initialize the vision craft plugin.
+
+ 
+  @override
+  void initState() {
+    super.initState();
+    visionCraft = VisionCraft(
+      // Vision Craft api key from vision craft bot on telegram.
+      apiKey: "edf8e8cb---",
+      // You can add the baseUrl manually if you want. It's optional.
+      // You can use the built in.
+      baseUrl: "https://visioncraft.top",
+    );
+  }
+
+```
 #### Generating Images
 
 ```dart
 Future<Uint8List?> generateImage({
-  required String apiKey,
   required String prompt,
   sampler: Samplers.euler,
   model: AIModels.anythingV45,
