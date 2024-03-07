@@ -9,9 +9,12 @@ import 'package:http/http.dart' as http;
 String apiUrl = "https://api.visioncraft.top";
 
 class VisionCraft {
+  final String apiKey;
+  final String? baseUrl;
+
+  VisionCraft({required this.apiKey, this.baseUrl});
   // Create image.
   Future<Uint8List?> generateImage({
-    required String apiKey,
     required String prompt,
     required AIStyles aiStyle,
     bool? nsfw_filter,
@@ -23,7 +26,7 @@ class VisionCraft {
     int? cfgScale,
     int? steps,
   }) async {
-    var url = '$apiUrl/generate';
+    var url = '${baseUrl ?? apiUrl}/generate';
 
     final requestBody = {
       "model": ModelConverter.getModel(model ?? AIModels.anythingV5),
@@ -72,7 +75,6 @@ class VisionCraft {
 
   // Use XL model
   Future<Uint8List?> useXLModel({
-    required String apiKey,
     required String prompt,
     required XLResolution xlResolution,
     required AIStyles aiStyle,
@@ -82,7 +84,7 @@ class VisionCraft {
     XLModels? model,
     bool? enhance,
   }) async {
-    var url = '$apiUrl/generate-xl';
+    var url = '${baseUrl ?? apiUrl}/generate-xl';
 
     final requestBody = {
       "model": EnumConverter.getXLModel(model ?? XLModels.sdxlBase),
@@ -143,7 +145,6 @@ class VisionCraft {
   // Upscale Image.
   Future<Uint8List> upscaleImage({
     required Uint8List image,
-    required String apiKey,
   }) async {
     try {
       // Encode image bytes to base64
@@ -156,7 +157,7 @@ class VisionCraft {
       };
 
       // API endpoint URL
-      String url = '$apiUrl/beta/upscale';
+      String url = '${baseUrl ?? apiUrl}/beta/upscale';
 
       // Set headers
       Map<String, String> headers = {
@@ -182,14 +183,13 @@ class VisionCraft {
   // Image to Image
   Future<Uint8List> img2img({
     required Uint8List image,
-    required String apiKey,
     required String prompt,
     required double strength,
     int? steps,
   }) async {
     String imageBase64 = base64Encode(image);
 
-    String url = "$apiUrl/img2img";
+    String url = "${baseUrl ?? apiUrl}/img2img";
 
     Map<String, String> headers = {
       "content-type": "application/json",
@@ -218,14 +218,13 @@ class VisionCraft {
   // Text to GIF.
 
   Future<String?> text2gif({
-    required String apiKey,
     required String prompt,
     String? negativePrompt,
     int? steps,
     int? cfgScale,
     Samplers? sampler,
   }) async {
-    var url = "$apiUrl/generate-gif";
+    var url = "${baseUrl ?? apiUrl}/generate-gif";
 
     final headers = {
       'accept': 'application/json',
@@ -261,7 +260,7 @@ class VisionCraft {
 
   // Get VisionCraft model List.
   Future<List<String>> getModelList() async {
-    var url = "$apiUrl/models";
+    var url = "${baseUrl ?? apiUrl}/models";
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -286,7 +285,7 @@ class VisionCraft {
 
   // Get all the available samplers.
   Future<List<String>> getSamplerList() async {
-    var url = "$apiUrl/samplers";
+    var url = '${baseUrl ?? apiUrl}/samplers';
 
     try {
       final response = await http.get(Uri.parse(url));
